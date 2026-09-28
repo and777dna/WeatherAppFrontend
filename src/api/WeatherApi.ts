@@ -1,6 +1,4 @@
-export interface ForecastResponse {
-    list: { main: { temp: number } }[];
-}
+import {ForecastResponse} from "../interfaces/interfaces";
 
 class WeatherApi{
     private readonly url: string

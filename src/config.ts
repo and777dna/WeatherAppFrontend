@@ -1,8 +1,7 @@
+import {Coordinates} from "./interfaces/interfaces";
+
 export const API_KEY = import.meta.env.API_KEY;
-interface Coordinates {
-    lat: number;
-    lon: number;
-}
+
 export const coordinates: Coordinates = {
     lon: 47.159401,
     lat: 34.330502

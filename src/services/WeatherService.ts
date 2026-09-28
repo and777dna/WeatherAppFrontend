@@ -1,4 +1,4 @@
-import { ForecastResponse } from "../api/WeatherApi";
+import {ForecastResponse} from "../interfaces/interfaces";
 
 class WeatherService {
     private _weatherJson: ForecastResponse;
