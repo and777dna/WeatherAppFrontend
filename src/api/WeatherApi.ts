@@ -1,3 +1,7 @@
+export interface ForecastResponse {
+    list: { main: { temp: number } }[];
+}
+
 class WeatherApi{
     private readonly url: string
 
@@ -5,16 +9,18 @@ class WeatherApi{
         this.url = url;
     }
 
-    async fetchWeatherData() {
+    async fetchWeatherData(): Promise<ForecastResponse> {
         try {
             const response = await fetch(this.url);
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
-        const result = await response.json();
+        const result = await response.json() as ForecastResponse;
         console.log(result);
+        return result;
     } catch (error) {
-            const message = error instanceof Error ? error.message : String(error);
-    }
+            error instanceof Error ? error.message : String(error);
+            throw error;
+        }
     }
 }
