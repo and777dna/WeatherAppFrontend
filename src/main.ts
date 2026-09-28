@@ -1,8 +1,8 @@
 import './style.css';
 
-const form = document.querySelector('#search-form');
-const input = document.querySelector('#city-input');
-const weather = document.querySelector('#weather');
+const form = document.querySelector<HTMLFormElement>('#search-form')!;
+const input = document.querySelector<HTMLInputElement>('#city-input')!;
+const weather = document.querySelector<HTMLDivElement>('#weather')!;
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
