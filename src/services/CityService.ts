@@ -1,4 +1,4 @@
-import { City } from "../interfaces/interfaces";
+import { City } from "../models/location";
 
 export class CityService {
     search(cities: City[], query: string, limit = 20): City[] {

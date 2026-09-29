@@ -1,5 +1,5 @@
-import { City } from "../interfaces/interfaces";
 import cityListUrl from "../data/city.list.json?url";
+import { City } from "../models/location";
 
 export class CityApi {
     private citiesPromise?: Promise<City[]>;

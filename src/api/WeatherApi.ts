@@ -1,4 +1,5 @@
-import { Coordinate, ForecastResponse } from "../interfaces/interfaces";
+import { Coordinate } from "../models/location";
+import { ForecastResponse } from "../models/weather";
 import { WeatherProvider } from "./Interfaces/WeatherProvider";
 
 export class WeatherApi implements WeatherProvider{

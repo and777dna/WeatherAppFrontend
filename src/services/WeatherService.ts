@@ -1,4 +1,4 @@
-import { ForecastResponse } from "../interfaces/interfaces";
+import { ForecastResponse } from "../models/weather";
 
 export class WeatherService {
     extractTemperatures(forecast: ForecastResponse): number[] {

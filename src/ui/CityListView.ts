@@ -1,4 +1,4 @@
-import { City } from "../interfaces/interfaces";
+import { City } from "../models/location";
 
 export class CityListView{
     constructor(private readonly list: HTMLUListElement) {}
