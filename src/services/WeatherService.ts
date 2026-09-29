@@ -1,14 +1,7 @@
-import {ForecastResponse} from "../interfaces/interfaces";
+import { ForecastResponse } from "../interfaces/interfaces";
 
-class WeatherService {
-    private _weatherJson: ForecastResponse;
-    private weatherForecast: number[] = [];
-    constructor(weatherJson: ForecastResponse) {
-        this._weatherJson = weatherJson;
-    }
-
-    extractValuesToArray() : number[]{
-        this.weatherForecast = this._weatherJson.list.map(item => item.main.temp);
-        return this.weatherForecast;
+export class WeatherService {
+    extractTemperatures(forecast: ForecastResponse): number[] {
+        return forecast.list.map(item => item.main.temp);
     }
 }
