@@ -1,17 +1,18 @@
 import {apiUrl, coordinates} from "./config";
 import {WeatherApi} from "./api/WeatherApi";
 import {Elements} from "./ui/Elements";
+import {WeatherProvider} from "./api/Interfaces/WeatherProvider";
 
 export class App {
-    constructor() {
-        var url = apiUrl(coordinates);
-        console.log("url", url)
-        var api = new WeatherApi(url);
-        api.fetchWeatherData();
+    constructor(private readonly weather: WeatherProvider) {}
+
+    async start() {
         new Elements();
-    }
+        try {
+            const forecast = await this.weather.getForecast(coordinates);
 
-    async start(){
-
+        } catch (error) {
+            console.error("unable to download weather forecast", error);
+        }
     }
 }

@@ -1,24 +1,19 @@
-import {ForecastResponse} from "../interfaces/interfaces";
+import { Coordinates, ForecastResponse } from "../interfaces/interfaces";
+import { WeatherProvider } from "./Interfaces/WeatherProvider";
 
-export class WeatherApi{
-    private readonly url: string
+export class WeatherApi implements WeatherProvider{
+    private readonly baseUrl = "https://api.openweathermap.org/data/2.5";
 
-    constructor(url: string) {
-        this.url = url;
-    }
+    constructor(private readonly apiKey: string) {}
 
-    async fetchWeatherData(): Promise<ForecastResponse> {
-        try {
-            const response = await fetch(this.url, {method: 'GET'});
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
-            }
-        const result = await response.json() as ForecastResponse;
-        console.log(result);
-        return result;
-    } catch (error) {
-            error instanceof Error ? error.message : String(error);
-            throw error;
+    async getForecast(coords: Coordinates): Promise<ForecastResponse> {
+        const url = `${this.baseUrl}/forecast?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${this.apiKey}`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`OpenWeather error: ${response.status} ${response.statusText}`);
         }
+
+        return await response.json() as ForecastResponse;
     }
 }
