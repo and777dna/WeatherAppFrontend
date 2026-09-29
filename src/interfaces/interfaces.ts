@@ -1,11 +1,11 @@
 export interface ForecastResponse {
     list: { main: { temp: number } }[];
 }
-export interface Coordinates {
+export interface Coordinate {
     lat: number;
     lon: number;
 }
-export interface Cities{
+export interface City{
     name: string;
-    coord: Coordinates;
+    coord: Coordinate;
 }
