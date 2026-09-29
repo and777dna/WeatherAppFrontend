@@ -9,7 +9,7 @@ export class WeatherApi{
 
     async fetchWeatherData(): Promise<ForecastResponse> {
         try {
-            const response = await fetch(this.url);
+            const response = await fetch(this.url, {method: 'GET'});
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
