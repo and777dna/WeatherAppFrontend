@@ -1,6 +1,6 @@
 import {ForecastResponse} from "../interfaces/interfaces";
 
-class WeatherApi{
+export class WeatherApi{
     private readonly url: string
 
     constructor(url: string) {
