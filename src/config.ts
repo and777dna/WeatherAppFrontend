@@ -1,4 +1,4 @@
-import {Coordinate} from "./interfaces/interfaces";
+import {Coordinate} from "./models/location";
 
 export const API_KEY = "869e641967132b11c26a9d63f98d8270";
 export const coordinates: Coordinate = {
