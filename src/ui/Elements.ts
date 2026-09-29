@@ -39,8 +39,16 @@ export class Elements {
     }
 
     private eventOnInputCities = async () => {
-        const cities = await this.getCities();
         const query = this.input.value.trim().toLowerCase();
+        if (query.length < 2) return this.list.replaceChildren();
+
+        const found: Cities[] = [];
+        const cities = await this.getCities();
+        for (const city of cities) {
+            if (!city.name.toLowerCase().startsWith(query)) continue;
+            if (found.push(city) === 20) break;
+        }
+
         this.render.renderCities(cities, query, this.list);
     };
 }
