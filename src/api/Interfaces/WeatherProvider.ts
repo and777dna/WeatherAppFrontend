@@ -1,5 +1,5 @@
-import { Coordinates, ForecastResponse } from "../../interfaces/interfaces";
+import { Coordinate, ForecastResponse } from "../../interfaces/interfaces";
 
 export interface WeatherProvider {
-    getForecast(coords: Coordinates): Promise<ForecastResponse>;
+    getForecast(coords: Coordinate): Promise<ForecastResponse>;
 }

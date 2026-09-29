@@ -1,6 +1,6 @@
 import { CityApi } from "../api/CityApi";
 import { CityService } from "../services/CityService";
-import { Render } from "./Render";
+import { CityListView } from "./CityListView";
 import { getElement } from "../utils/dom";
 
 const MIN_QUERY_LENGTH = 2;
@@ -9,7 +9,7 @@ export class CitySearch {
     private readonly input = getElement<HTMLInputElement>("#city-input");
     private readonly list = getElement<HTMLUListElement>("#list");
     private readonly cityService = new CityService();
-    private readonly render = new Render();
+    private readonly cityList = new CityListView(getElement<HTMLUListElement>("#list"));
 
     constructor(private readonly cityApi: CityApi) {
         this.input.addEventListener("input", this.onInput);
@@ -26,7 +26,8 @@ export class CitySearch {
         try {
             const cities = await this.cityApi.getCities();
             const found = this.cityService.search(cities, query);
-            this.render.render(found, this.list);
+            this.cityList.clear();
+            this.cityList.render(found);
         } catch (error) {
             console.error("unable to load cities", error);
         }

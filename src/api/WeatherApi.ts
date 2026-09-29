@@ -1,4 +1,4 @@
-import { Coordinates, ForecastResponse } from "../interfaces/interfaces";
+import { Coordinate, ForecastResponse } from "../interfaces/interfaces";
 import { WeatherProvider } from "./Interfaces/WeatherProvider";
 
 export class WeatherApi implements WeatherProvider{
@@ -6,7 +6,7 @@ export class WeatherApi implements WeatherProvider{
 
     constructor(private readonly apiKey: string) {}
 
-    async getForecast(coords: Coordinates): Promise<ForecastResponse> {
+    async getForecast(coords: Coordinate): Promise<ForecastResponse> {
         const url = `${this.baseUrl}/forecast?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${this.apiKey}`;
         const response = await fetch(url);
 
