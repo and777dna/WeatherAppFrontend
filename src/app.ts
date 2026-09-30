@@ -4,6 +4,7 @@ import { CitySearch } from "./ui/CitySearch";
 import { CityApi } from "./api/CityApi";
 import { Coordinate } from "./models/location";
 import {ForecastResponse} from "./models/weather";
+import {WeatherListView} from "./ui/WeatherListView";
 
 export class App {
     private readonly weatherService = new WeatherService();
@@ -19,9 +20,9 @@ export class App {
     }
     private async loadForecast(coord: Coordinate) {
         try {
-            console.log("I am here",coord)
             const forecast = await this.weather.getForecast(coord);
             const temperatures = this.weatherService.extractTemperatures(forecast);
+            new WeatherListView(temperatures).render();
         } catch (error) {
             console.error("unable to download weather forecast", error);
         }
