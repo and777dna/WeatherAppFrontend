@@ -9,14 +9,13 @@ import {getElement} from "./utils/dom";
 export class App {
     private readonly weatherService = new WeatherService();
     private readonly weatherTable = new WeatherTableView(getElement<HTMLTableElement>("#forecast"));
-    constructor(private readonly weather: WeatherProvider) {}
+    constructor(
+        private readonly weather: WeatherProvider,
+        private readonly cityApi: CityApi
+    ) {}
 
     async start() {
-        new CitySearch(
-            new CityApi(), city => {
-                console.log("selected:",city.name, city.coord);
-                this.loadForecast(city.coord);
-        });
+        new CitySearch(this.cityApi, city => this.loadForecast(city.coord))
     }
     private async loadForecast(coord: Coordinate) {
         try {

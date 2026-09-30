@@ -1,7 +1,8 @@
 import cityListUrl from "../data/city.list.json?url";
 import { City } from "../models/location";
+import { CityProvider } from "./Interfaces/CityProvider";
 
-export class CityApi {
+export class CityApi implements CityProvider {
     private citiesPromise?: Promise<City[]>;
 
     getCities(): Promise<City[]> {
