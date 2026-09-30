@@ -9,7 +9,7 @@ export class App {
     constructor(private readonly weather: WeatherProvider) {}
 
     async start() {
-        new CitySearch(new CityApi())
+        var city = new CitySearch(new CityApi(), city => console.log("selected:",city.name, city.coord));
         try {
             const forecast = await this.weather.getForecast(coordinates);
             const temperatures = this.weatherService.extractTemperatures(forecast);
