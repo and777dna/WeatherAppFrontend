@@ -1,6 +1,6 @@
 export interface Coordinate {
-    readonly lat: number;
-    readonly lon: number;
+    lat: number;
+    lon: number;
 }
 
 export interface City {
